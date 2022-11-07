@@ -1,0 +1,26 @@
+{
+	"modules": [
+		{
+			"name": "openssl",
+			"version": "3.0.7",
+			"sourceURI": "https://github.com/openssl/openssl/archive/refs/tags/openssl-3.0.7.zip"
+			"artifacts": [
+				{
+					"cpuArch": "x64",
+					"targets": ["relase"]
+				}
+			]
+		},
+		{
+			"protobuf": "protobuf",
+			"version": "3.21.19",
+			"sourceURI": "https://github.com/protocolbuffers/protobuf/releases/download/v21.9/protobuf-cpp-3.21.9.zip",
+			"artifacts": [
+				{
+					"cpuArch": "x64",
+					"targets": ["relase"]
+				}
+			]
+		}
+]
+
