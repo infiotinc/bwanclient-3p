@@ -38,9 +38,16 @@ Note: The openssl static library requires zlib to built as a static library too.
 	xcopy zlib.lib C:\build\openssl\
 	xcopy zlib.pdb C:\build\openssl\
 	```
+1. Prepare the openSSL config generator to do a build that does not require VCRedist
+   1. edit `C:\build\openssl\Configurations\10-main.conf` and make the following changes
+      ```
+	  line num 1358: ($disabled{shared} ? "" : "/MDd") ==> ($disabled{shared} ? "" : "/MTd
+	  line num 1362: ($disabled{shared} ? "" : "/MD")  ==> ($disabled{shared} ? "" : "/MT")
+	  ```
+	  NOTE: openSSL supports `/MT` only when generating static libraries
 1. OpenSSL build: Navigate to OpenSSL source: cd C:\build\openssl\ and configure it to use static zlib & read configuration files (openssl.cnf) from C:\Windows\ directory.
 	```
-	perl Configure VC-WIN64A no-shared zlib no-zlib-dynamic threads --prefix=C:\Windows\
+	perl Configure VC-WIN64A shared no-zlib threads --prefix=c:\Windows\ --release
 	```
 1. Build OpenSSL by running `nmake` (will take around 15 minutes) - static and dynamically linkable artifacts (`libssl.lib,dll/libssl_static.lib` and `libcrypto.lib,dll/libcrypto_static.lib`) will be generated in `c:\build\openssl` folder
 1. copy the linkable artifacts and `include\openssl` directory to the appropriate folders inside thirparty folder under `openssl`
