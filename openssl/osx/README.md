@@ -3,6 +3,7 @@
 Note: Libraries need to be built for both Intel and Arm processors.
 
 To build openssl using below commands: 
+    
     ./build-openssl.sh -i  -> for interaction mode with user to take permission to go to next step 
     ./build-openssl.sh     -> Run without user interaction
 
