@@ -8,7 +8,7 @@
 # Building OpenSSL Static LIB
 
 Note: The openssl static library requires zlib to built as a static library too. the steps below illustrate the build process for both openssl and zlib
-
+0. openssl-3.0.13 has build problem: https://github.com/openssl/openssl/discussions/23736 and https://github.com/openssl/openssl/commit/7b3eda56d7891aceef91867de64f24b20e3db212, fix these files manually
 1. Open `x64 Native Tools Command Prompt` from your Start Menu. You will see command prompt.
 1. Create C:\build directory and issue the following command in the command prompt:
 	```
@@ -23,7 +23,7 @@ Note: The openssl static library requires zlib to built as a static library too.
 	_OpenSSL:_
 	
 	* download the source code zip file from the [openssl release page](https://github.com/openssl/openssl)
-	  We are currently using [v3.0.7](https://github.com/openssl/openssl/archive/refs/tags/openssl-3.0.7.zip)
+	  We are currently using [v3.0.7](https://github.com/openssl/openssl/archive/refs/tags/openssl-3.0.13.zip)
 	* unzip to `C:\build\openssl`
 
 1. First we have to build static zlib. To do that first we will need to edit some configuration files:
