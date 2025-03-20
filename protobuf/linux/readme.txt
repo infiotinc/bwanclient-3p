@@ -4,8 +4,13 @@ tar -xvf v3.21.9.tar.gz
   cd protobuf-3.21.9/
   ./autogen.sh
   ./configure CXXFLAGS="-O2"
+or -- only for static lib
+  ./configure --disable-shared
   make
   sudo make install
+
+output directory:
+src/.libs/
 
 Protocol Buffers - Google's data interchange format
 Copyright 2008 Google Inc.
