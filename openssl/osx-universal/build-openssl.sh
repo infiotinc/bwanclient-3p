@@ -211,7 +211,10 @@ then
 
         #./configure --disable-shared --prefix=${PREFIX} --host=arm --exec-prefix=${PREFIX}/platform/arm64-osx "CC=${CC}" "CFLAGS=${CFLAGS} -arch arm64" "CXX=${CXX}" "CXXFLAGS=${CXXFLAGS}" "LDFLAGS=${LDFLAGS}" "LIBS=${LIBS}"
         printf "Running CONFIGURE Command with args: ./Configure enable-rc5 zlib ${DARWIN_ARM} no-asm shared --prefix=${PREFIX}/platform/arm64-osx \n\n"
-        ./Configure enable-rc5 zlib ${DARWIN_ARM} no-asm shared --prefix=${PREFIX}/platform/arm64-osx
+        #./Configure enable-rc5 zlib ${DARWIN_ARM} no-asm shared --prefix=${PREFIX}/platform/arm64-osx
+        
+        ./Configure enable-rc5 enable-legacy enable-deprecated zlib ${DARWIN_ARM} no-asm shared --prefix=${PREFIX}/platform/arm64-osx
+        
         printf "\n\nConfigure done. Running make for ARM_64 for Mac OS X. It will take around 5-10 mins to complete. Check logs at path: /tmp/openssl_build.log...\n\n"
         make >> /tmp/openssl_build.log
         make install >> /tmp/openssl_build.log
