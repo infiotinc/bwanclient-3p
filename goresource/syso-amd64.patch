@@ -1,0 +1,25 @@
+--- a/pkg/coff/file.go
++++ b/pkg/coff/file.go
+@@ -104,11 +104,11 @@
+ 	f.freeze()
+ 
+ 	n, err := common.BinaryWriteTo(w, &rawFileHeader{
+-		Machine:              0x14c, // IMAGE_FILE_MACHINE_I386
++		Machine:              0x8664, // IMAGE_FILE_MACHINE_AMD64
+ 		NumberOfSections:     uint16(len(f.sections)),
+ 		PointerToSymbolTable: f.symbolsOffset,
+ 		NumberOfSymbols:      uint32(len(f.sections)),
+-		Characteristics:      0x0100, // IMAGE_FILE_32BIT_MACHINE
++		Characteristics:      0,
+ 	})
+ 	if err != nil {
+ 		return written, err
+@@ -149,7 +149,7 @@
+ 			n, err := common.BinaryWriteTo(w, &rawRelocation{
+ 				VirtualAddress:   r.VirtualAddress(),
+ 				SymbolTableIndex: uint32(i),
+-				Type:             0x0007, // IMAGE_REL_I386_DIR32NB
++				Type:             0x0003, // IMAGE_REL_AMD64_ADDR32NB
+ 			})
+ 			if err != nil {
+ 				return written, err
